@@ -1,5 +1,7 @@
 package factorymethod
 
+import "fmt"
+
 // Operator 是被封装的实际类接口
 type Operator interface {
 	SetA(int)
@@ -63,4 +65,14 @@ type MinusOperator struct {
 // Result 获取结果
 func (o MinusOperator) Result() int {
 	return o.a - o.b
+}
+
+
+func Compute(factory OperatorFactory, a, b int) int {
+	op := factory.Create()
+	op.SetA(a)
+	op.SetB(b)
+
+	fmt.Println("op.Result()=",op.Result())
+	return op.Result()
 }

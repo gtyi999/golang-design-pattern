@@ -71,3 +71,9 @@ func (*XMLDAOFactory) CreateOrderMainDAO() OrderMainDAO {
 func (*XMLDAOFactory) CreateOrderDetailDAO() OrderDetailDAO {
 	return &XMLDetailDAO{}
 }
+
+
+func GetMainAndDetail(factory DAOFactory) {
+	factory.CreateOrderMainDAO().SaveOrderMain()
+	factory.CreateOrderDetailDAO().SaveOrderDetail()
+}
